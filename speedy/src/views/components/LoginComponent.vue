@@ -46,6 +46,13 @@ const login = () => {
         (user) => user.email === email.value && user.password === password.value
     );
 
+    const userId = user?.id;
+
+    localStorage.setItem('userId', userId);
+
+    console.log(user);
+    console.log(userId);
+
     if (user) {
         switch (user.type) {
             case 'super-admin':
