@@ -62,12 +62,44 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/components/admin/admin_dashboard.vue"),
   },
 
+  {
+    path: "/account_management",
+    name: "Account Management",
+    component: () => import("../views/components/admin/account_management.vue"),
+  },
+
+  {
+    path: "/users",
+    name: "Users",
+    component: () => import("../views/components/admin/users_management.vue"),
+  },
+
+  {
+    path: "/customization",
+    name: "Customization",
+    component: () =>
+      import("../views/components/admin/customization_management.vue"),
+  },
+
+  {
+    path: "/settings",
+    name: "Settings",
+    component: () =>
+      import("../views/components/admin/settings_management.vue"),
+  },
+
   // super admin routes
   {
     path: "/super_admin_dashboard",
     name: "Super Admin Dashboard",
     component: () =>
       import("../views/components/super_admin/super_admin_dashboard.vue"),
+  },
+
+  {
+    path: "/test",
+    name: "Test",
+    component: () => import("../views/components/TestPage.vue"),
   },
 ];
 

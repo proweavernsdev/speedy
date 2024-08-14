@@ -28,54 +28,62 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonInput, IonButton, IonCardSubtitle } from '@ionic/vue';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { users } from '../data/users';
+import {
+    IonPage,
+    IonContent,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonButton,
+} from "@ionic/vue";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import HeaderComponent from "./main_components/HeaderComponent.vue";
+import FooterComponent from "./main_components/FooterComponent.vue";
+import { users } from "../data/users";
 
-const email = ref('');
-const password = ref('');
+const email = ref("");
+const password = ref("");
 const router = useRouter();
 const userslist = ref(users);
 
-const login = () => {
-    console.log(email.value);
-    console.log(password.value);
+const isValid = ref(false);
 
+const login = () => {
     const user = userslist.value.find(
         (user) => user.email === email.value && user.password === password.value
     );
 
     const userId = user?.id;
 
-    localStorage.setItem('userId', userId);
-
-    console.log(user);
-    console.log(userId);
+    if (userId) {
+        localStorage.setItem("userId", userId);
+    }
 
     if (user) {
+        isValid.value = true;
         switch (user.type) {
-            case 'super-admin':
-                router.push('/super_admin_dashboard');
+            case "super-admin":
+                router.push("/super_admin_dashboard");
                 break;
-            case 'admin':
-                router.push('/admin_dashboard');
+            case "admin":
+                router.push("/admin_dashboard");
                 break;
-            case 'company':
-                router.push('/company_dashboard');
+            case "company":
+                router.push("/company_dashboard");
                 break;
-            case 'driver':
-                router.push('/driver_dashboard');
+            case "driver":
+                router.push("/driver_dashboard");
                 break;
-            case 'customer':
-                router.push('/customer_dashboard');
+            case "customer":
+                router.push("/customer_dashboard");
                 break;
             default:
-                router.push('/login'); // Fallback in case no type matches
+                router.push("/login");
                 break;
         }
     } else {
-        alert('Invalid email or password');
+        alert("Invalid email or password");
     }
 };
 
