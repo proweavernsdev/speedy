@@ -1,6 +1,7 @@
 <template>
     <ion-page>
-        <HeaderComponent title="Account Management" headerIcon="person-circle" navigatePath="admin_dashboard" />
+        <HeaderComponent title="Account" headerIcon="person-circle" navigatePath="admin_dashboard"
+            backIcon="chevron-back" />
         <ContentComponent contentTitle=" Account Management"
             contentText="Manage your account details and settings here." />
     </ion-page>

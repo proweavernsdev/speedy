@@ -26,7 +26,7 @@ import { IonFooter, IonToolbar, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/
 import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 
-const props = defineProps({
+defineProps({
     button1Text: String,
     button1Link: String,
     button1Icon: String,

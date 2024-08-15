@@ -1,8 +1,9 @@
 <template>
     <ion-header>
         <ion-toolbar>
-            <ion-title slot="start">{{ title }}</ion-title>
-            <ion-icon :name="headerIcon" slot="end" @click="navigateTo"></ion-icon>
+            <ion-icon id="leftIcon" :name="backIcon" slot="start" @click="navigateTo" v-show="backIcon"></ion-icon>
+            <ion-title class="ion-padding">{{ title }}</ion-title>
+            <ion-icon id="rightIcon" :name="headerIcon" slot="end" @click="navigateTo"></ion-icon>
         </ion-toolbar>
     </ion-header>
 </template>
@@ -15,7 +16,8 @@ import { useRouter } from 'vue-router';
 const props = defineProps({
     title: String,
     headerIcon: String,
-    navigatePath: String
+    navigatePath: String,
+    backIcon: String
 });
 
 const router = useRouter();
@@ -27,11 +29,17 @@ const navigateTo = () => {
 </script>
 
 <style scoped>
-ion-icon {
+#rightIcon {
     font-size: 32px;
     color: #ad2831;
     cursor: pointer;
-    margin-right: 16px;
+    margin: 0 16px;
+}
 
+#leftIcon {
+    font-size: 32px;
+    color: #ad2831;
+    cursor: pointer;
+    margin-left: 16px;
 }
 </style>
