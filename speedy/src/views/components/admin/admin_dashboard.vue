@@ -1,7 +1,7 @@
 <template>
     <ion-page>
-        <HeaderComponent title="Dashboard" headerIcon="person-circle" backIcon="none"
-            navigatePath="account_management" />
+        <HeaderComponent title="Dashboard" headerIcon="person-circle" backIcon="construct-outline"
+            navigatePathonRight="account_management" navigatePathonLeft="admin_dashboard" />
         <ContentComponent contentTitle="Admin Dashboard"
             contentText="Welcome to the Admin Dashboard. Choose an option from the footer to manage your application." />
         <FooterComponent :button1Text="'Dashboard'" :button1Link="'admin_dashboard'" :button1Icon="'home'"

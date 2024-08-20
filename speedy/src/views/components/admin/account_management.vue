@@ -1,9 +1,9 @@
 <template>
     <ion-page>
-        <HeaderComponent title="Account" headerIcon="person-circle" navigatePath="admin_dashboard"
-            backIcon="chevron-back" />
-        <ContentComponent contentTitle=" Account Management"
-            contentText="Manage your account details and settings here." />
+        <HeaderComponent title="Account" headerIcon="person-circle" backIcon="chevron-back"
+            navigatePathonRight="account_management" navigatePathonLeft="admin_dashboard" />
+        <ContentComponent contentTitle="Account Management"
+            contentText="Manage your account details and settings here."/>
     </ion-page>
 </template>
 

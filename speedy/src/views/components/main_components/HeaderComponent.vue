@@ -1,9 +1,9 @@
 <template>
     <ion-header>
         <ion-toolbar>
-            <ion-icon id="leftIcon" :name="backIcon" slot="start" @click="navigateTo" v-show="backIcon"></ion-icon>
+            <ion-icon id="leftIcon" :name="backIcon" slot="start" @click="navigateTo('leftNav')" :v-show="backIcon"></ion-icon>
             <ion-title class="ion-padding">{{ title }}</ion-title>
-            <ion-icon id="rightIcon" :name="headerIcon" slot="end" @click="navigateTo"></ion-icon>
+            <ion-icon id="rightIcon" :name="headerIcon" slot="end" @click="navigateTo('rightNav')" :v-show="headerIcon"></ion-icon>
         </ion-toolbar>
     </ion-header>
 </template>
@@ -16,16 +16,25 @@ import { useRouter } from 'vue-router';
 const props = defineProps({
     title: String,
     headerIcon: String,
-    navigatePath: String,
-    backIcon: String
+    backIcon: String,
+    navigatePathonRight: String,
+    navigatePathonLeft: String
 });
 
 const router = useRouter();
 
-const navigateTo = () => {
-    console.log('navigateTo: ', props.navigatePath);
-    router.push(`/${props.navigatePath}`);
-};
+function navigateTo(state : string) {
+    if (state === 'rightNav') {
+        console.log(props.navigatePathonRight);
+        router.push("/" + props.navigatePathonRight);
+    } else if (state === 'leftNav') {
+        console.log(props.navigatePathonLeft);
+        router.push("/" + props.navigatePathonLeft);
+    } else {
+        router.push({ name: 'Home' });
+    }
+    
+}
 </script>
 
 <style scoped>
