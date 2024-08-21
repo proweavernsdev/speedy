@@ -31,15 +31,19 @@
 import {
     IonPage,
     IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonCardContent,
     IonItem,
     IonLabel,
     IonInput,
     IonButton,
 } from "@ionic/vue";
+
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import HeaderComponent from "./main_components/HeaderComponent.vue";
-import FooterComponent from "./main_components/FooterComponent.vue";
 import { users } from "../data/users";
 
 const email = ref("");
@@ -63,17 +67,8 @@ const login = () => {
     if (user) {
         isValid.value = true;
         switch (user.type) {
-            case "super-admin":
-                router.push("/super_admin_dashboard");
-                break;
-            case "admin":
-                router.push("/admin_dashboard");
-                break;
-            case "company":
-                router.push("/company_dashboard");
-                break;
             case "driver":
-                router.push("/driver_dashboard");
+                router.push("/driver/dashboard");
                 break;
             case "customer":
                 router.push("/customer_dashboard");

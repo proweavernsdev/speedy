@@ -15,6 +15,10 @@ ion-input {
   margin-top: 16px;
   padding: 16px;
 }
+ion-label {
+  font-family: "Moderustic", sans-serif;
+  font-weight: bold;
+}
 ion-button {
   margin: 16px 0;
 }

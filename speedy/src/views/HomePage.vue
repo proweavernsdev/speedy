@@ -31,6 +31,7 @@ ion-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  justify-content: normal;
 }
 
 ion-button {

@@ -1,12 +1,10 @@
 <template>
     <ion-page>
-        <HeaderComponent title="Dashboard" headerIcon="person-circle" backIcon="" navigatePathonRight="customer_account"
+        <HeaderComponent title="Others" headerIcon="person-circle" backIcon="" navigatePathonRight="customer_account"
             navigatePathonLeft="customer_dashboard" />
 
         <div class="ion-padding">
-            <div class="tw-flex tw-justify-between tw-items-center">
-                <h1>Deliveries</h1>
-            </div>
+            <h1>Others</h1>
         </div>
         <FooterComponent :button1Text="'Dashboard'" :button1Link="'customer_dashboard'" :button1Icon="'home'"
             :button2Text="'Current Orders'" :button2Link="'customer_deliveries'" :button2Icon="'cart'"
@@ -28,5 +26,7 @@ ion-page {
     flex-direction: column;
     height: 100vh;
     justify-content: normal;
+    overflow-y: auto;
+    flex: 1;
 }
 </style>

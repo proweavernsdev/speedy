@@ -1,27 +1,16 @@
 <template>
   <ion-header>
     <ion-toolbar>
-      <ion-icon
-        id="leftIcon"
-        :name="backIcon"
-        slot="start"
-        @click="navigateTo('leftNav')"
-        :v-show="backIcon"
-      ></ion-icon>
+      <ion-icon id="leftIcon" :name="backIcon" slot="start" @click="navigateTo('leftNav')" v-show="backIcon"></ion-icon>
       <ion-title class="ion-padding">{{ title }}</ion-title>
-      <ion-icon
-        id="rightIcon"
-        :name="headerIcon"
-        slot="end"
-        @click="navigateTo('rightNav')"
-        :v-show="headerIcon"
-      ></ion-icon>
+      <ion-icon id="rightIcon" :name="headerIcon" slot="end" @click="navigateTo('rightNav')"
+        :v-show="headerIcon"></ion-icon>
     </ion-toolbar>
   </ion-header>
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonToolbar, IonTitle } from "@ionic/vue";
+import { IonHeader, IonToolbar, IonTitle, IonIcon } from '@ionic/vue';
 import { defineProps } from "vue";
 import { useRouter } from "vue-router";
 

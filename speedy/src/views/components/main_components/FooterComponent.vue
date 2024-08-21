@@ -4,16 +4,16 @@
             <ion-grid>
                 <ion-row>
                     <ion-col size="3">
-                        <ion-icon :name="button1Icon" @click="navigateTo(button1Link)"></ion-icon>
+                        <ion-icon :name="button1Icon" @click="navigateTo('button1')"></ion-icon>
                     </ion-col>
                     <ion-col size=" 3">
-                        <ion-icon :name="button2Icon" @click="navigateTo(button2Link)"></ion-icon>
+                        <ion-icon :name="button2Icon" @click="navigateTo('button2')"></ion-icon>
                     </ion-col>
                     <ion-col size="3">
-                        <ion-icon :name="button3Icon" @click="navigateTo(button3Link)"></ion-icon>
+                        <ion-icon :name="button3Icon" @click="navigateTo('button3')"></ion-icon>
                     </ion-col>
                     <ion-col size="3">
-                        <ion-icon :name="button4Icon" @click="navigateTo(button4Link)"></ion-icon>
+                        <ion-icon :name="button4Icon" @click="navigateTo('button4')"></ion-icon>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -26,7 +26,7 @@ import { IonFooter, IonToolbar, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/
 import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 
-defineProps({
+const props = defineProps({
     button1Text: String,
     button1Link: String,
     button1Icon: String,
@@ -42,14 +42,34 @@ defineProps({
 });
 const router = useRouter();
 
-const navigateTo = (path: string) => {
-    router.push(path.startsWith('/') ? path : `/${path}`);
-};
+function navigateTo(path: string) {
+    if (path === "button1") {
+        console.log(props.button1Link);
+        router.push("/" + props.button1Link);
+    } else if (path === "button2") {
+        console.log(props.button2Link);
+        router.push("/" + props.button2Link);
+    } else if (path === "button3") {
+        console.log(props.button3Link);
+        router.push("/" + props.button3Link);
+    } else {
+        console.log(props.button4Link);
+        router.push("/" + props.button4Link);
+    }
+
+}
+
 </script>
 
 <style scoped>
 ion-footer {
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 ion-row {

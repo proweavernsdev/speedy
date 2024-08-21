@@ -40,62 +40,37 @@ const routes: Array<RouteRecordRaw> = [
       import("../views/components/customer/customer_dashboard.vue"),
   },
 
+  {
+    path: "/customer_account",
+    name: "Customer Account",
+    component: () =>
+      import("../views/components/customer/account_management.vue"),
+  },
+
+  {
+    path: "/customer_deliveries",
+    name: "Customer Deliveries",
+    component: () => import("../views/components/customer/customer_deliveries.vue"),
+  },
+
+  {
+    path: "/customer_history",
+    name: "Customer History",
+    component: () => import("../views/components/customer/customer_history.vue"),
+  },
+
+  {
+    path: "/customer_others-settings",
+    name: "Customer Settings",
+    component: () => import("../views/components/customer/others_settings.vue"),
+  },
+
   // driver routes
   {
-    path: "/driver_dashboard",
+    path: "/driver/dashboard",
     name: "Driver Dashboard",
     component: () => import("../views/components/driver/driver_dashboard.vue"),
   },
-
-  // company routes
-  {
-    path: "/company_dashboard",
-    name: "Company Dashboard",
-    component: () =>
-      import("../views/components/company/company_dashboard.vue"),
-  },
-
-  // admin routes
-  {
-    path: "/admin_dashboard",
-    name: "Admin Dashboard",
-    component: () => import("../views/components/admin/admin_dashboard.vue"),
-  },
-
-  {
-    path: "/account_management",
-    name: "Account Management",
-    component: () => import("../views/components/admin/account_management.vue"),
-  },
-
-  {
-    path: "/users",
-    name: "Users",
-    component: () => import("../views/components/admin/users_management.vue"),
-  },
-
-  {
-    path: "/customization",
-    name: "Customization",
-    component: () =>
-      import("../views/components/admin/customization_management.vue"),
-  },
-
-  {
-    path: "/settings",
-    name: "Settings",
-    component: () =>
-      import("../views/components/admin/settings_management.vue"),
-  },
-
-  // super admin routes
-  {
-    path: "/super_admin_dashboard",
-    name: "Super Admin Dashboard",
-    component: () =>
-      import("../views/components/super_admin/super_admin_dashboard.vue"),
-  },
-
   {
     path: "/test",
     name: "Test",
