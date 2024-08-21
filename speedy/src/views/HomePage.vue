@@ -5,19 +5,24 @@
         <h1>
           <strong>Welcome to Speedy</strong>
         </h1>
-        <p>
-          A simple app to help you get started with Ionic and Vue.
-        </p>
-        <ion-button expand="full" @click="router.push('/login')">Login</ion-button>
-        <ion-button expand="full" @click="router.push('/register')" color="secondary">Register</ion-button>
+        <p>A simple app to help you get started with Ionic and Vue.</p>
+        <ion-button expand="full" @click="router.push('/login')"
+          >Login</ion-button
+        >
+        <ion-button
+          expand="full"
+          @click="router.push('/register')"
+          color="secondary"
+          >Register</ion-button
+        >
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonButton } from '@ionic/vue';
-import { useRouter } from 'vue-router';
+import { IonContent, IonPage, IonButton } from "@ionic/vue";
+import { useRouter } from "vue-router";
 const router = useRouter();
 </script>
 
