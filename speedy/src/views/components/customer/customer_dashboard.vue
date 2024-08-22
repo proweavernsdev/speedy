@@ -8,6 +8,7 @@
                 <h1>Deliveries</h1>
             </div>
         </div>
+
         <FooterComponent :button1Text="'Dashboard'" :button1Link="'customer_dashboard'" :button1Icon="'home'"
             :button2Text="'Current Orders'" :button2Link="'customer_deliveries'" :button2Icon="'cart'"
             :button3Text="'History'" :button3Link="'customer_history'" :button3Icon="'file-tray-full'"

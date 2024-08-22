@@ -1,28 +1,22 @@
 <template>
     <ion-page>
-        <ion-content :fullscreen="true">
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>Login</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    <ion-item>
-                        <ion-label position="floating">Email</ion-label>
-                        <ion-input type="email" v-model="email"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="floating">Password</ion-label>
-                        <ion-input type="password" v-model="password"></ion-input>
-                    </ion-item>
-                    <ion-button expand="full" @click="login" shape="round">Login</ion-button>
-                </ion-card-content>
-                <ion-card-subtitle class="tw-flex tw-justify-around ion-padding">
-                    <a @click="navigateTo('forgotPassword')"
-                        class="tw-underline tw-cursor-pointer hover:tw-no-underline">Forgot Password?</a>
-                    <a @click="navigateTo('register')"
-                        class="tw-underline tw-cursor-pointer hover:tw-no-underline">Register</a>
-                </ion-card-subtitle>
-            </ion-card>
+        <ion-content :fullscreen="true" class="ion-padding">
+            <h1>Login</h1>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" v-model="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" v-model="password"></ion-input>
+            </ion-item>
+            <ion-button expand="full" @click="login" shape="round">Login</ion-button>
+            <div class="tw-flex tw-justify-around">
+                <a @click="navigateTo('forgotPassword')"
+                    class="tw-underline tw-cursor-pointer hover:tw-no-underline">Forgot Password?</a>
+                <a @click="navigateTo('register')"
+                    class="tw-underline tw-cursor-pointer hover:tw-no-underline">Register</a>
+            </div>
         </ion-content>
     </ion-page>
 </template>
@@ -31,11 +25,6 @@
 import {
     IonPage,
     IonContent,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
     IonItem,
     IonLabel,
     IonInput,

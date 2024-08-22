@@ -12,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 ion-input {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 18px;
+  padding: 18px;
 }
 ion-label {
   font-family: "Moderustic", sans-serif;
@@ -24,6 +24,10 @@ ion-button {
 }
 body {
   font-size: 1rem;
+  background-color: #250902;
+}
+ion-page {
+  background-color: #250902;
 }
 h1 {
   font-size: 2.5rem;
