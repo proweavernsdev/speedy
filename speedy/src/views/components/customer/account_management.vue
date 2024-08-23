@@ -1,24 +1,48 @@
 <template>
     <ion-page>
-        <HeaderComponent title="Account" headerIcon="person-circle" backIcon="chevron-back-outline"
+        <HeaderComponent title="Account" headerIcon="" backIcon="chevron-back-outline"
             navigatePathonRight="customer_account" navigatePathonLeft="customer_dashboard" />
         <div class="ion-padding" id="account_container">
             <div v-show="!isEditing">
-                <h2>Account Management</h2>
-                <div class="account-info">
-                    <p><strong>First Name:</strong> {{ user.firstName }}</p>
-                    <p><strong>Last Name:</strong> {{ user.lastName }}</p>
-                    <p><strong>Address:</strong> {{ user.address }}</p>
-                    <p><strong>State:</strong> {{ user.state }}</p>
-                    <p><strong>Town / City:</strong> {{ user.city }}</p>
-                    <p><strong>ZIP:</strong> {{ user.zip }}</p>
+                <div class="tw-flex tw-justify-between tw-items-center">
+                    <h5 class=" tw-text-white tw-px-3">Profile</h5>
+                    <ion-button @click="toggleEditMode" class="ion-text-end">Edit</ion-button>
                 </div>
-                <div class="tw-flex tw-justify-between tw-gap-3">
-                    <ion-button expand="full" color="primary" @click="toggleEditMode"
-                        class="tw-w-full tw-rounded-lg">Edit</ion-button>
-                    <ion-button expand="full" color="danger" @click="confirmDelete" class="tw-w-full">Delete
-                        Account</ion-button>
+
+                <div class="tw-bg-white tw-rounded-md ion-margin-bottom">
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">First Name</ion-label>
+                        <ion-input type="text" class="tw-w-1/3 ion-text-end" v-model="editUser.firstName"
+                            placeholder="First Name"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Last Name</ion-label>
+                        <ion-input type="text" class="tw-w-1/3 ion-text-end" v-model="editUser.lastName"
+                            placeholder="Last Name"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Address</ion-label>
+                        <ion-input type="text" class="tw-w-1/3 ion-text-end" v-model="editUser.address"
+                            placeholder="Address"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">State</ion-label>
+                        <ion-input type="text" class="tw-w-1/3 ion-text-end" v-model="editUser.state"
+                            placeholder="State"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Town / City</ion-label>
+                        <ion-input type="text" class="tw-w-1/3 ion-text-end" v-model="editUser.city"
+                            placeholder="Town / City"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3">
+                        <ion-label class="text-label tw-w-1/2">ZIP</ion-label>
+                        <ion-input type="text" class="tw-w-1/3 ion-text-end" v-model="editUser.zip"
+                            placeholder="ZIP"></ion-input>
+                    </div>
                 </div>
+                <ion-button expand="full" mode="ios" shape="round" color="danger" @click="confirmDelete"
+                    class="ion-margin-vertical">Delete Account</ion-button>
             </div>
 
             <!-- Edit Mode -->
@@ -108,6 +132,7 @@ ion-input {
 
 ion-button {
     --border-radius: 10px;
+    margin: 0px;
 }
 
 .account-info {

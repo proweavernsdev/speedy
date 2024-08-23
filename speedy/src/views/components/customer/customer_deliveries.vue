@@ -7,76 +7,67 @@
             <div class="ion-padding">
                 <div class="tw-flex tw-justify-between tw-items-center">
                     <div>
-                        <h1 v-if="!isUserOrdering && isUserHasOrders">New Order:</h1>
-                        <h1 v-else>Current Orders</h1>
+                        <h3 v-if="!isUserOrdering && isUserHasOrders">New Order:</h3>
+                        <h3 v-else>Current Orders</h3>
                     </div>
 
                     <div>
-                        <ion-icon v-if="isUserHasOrders" name="remove-circle-outline"
-                            @click="addNewOrder('add')"></ion-icon>
+                        <ion-icon v-if="isUserHasOrders" name="close-outline" @click="addNewOrder('add')"></ion-icon>
                         <ion-icon v-else name="add-circle-outline" @click="addNewOrder('remove')"></ion-icon>
                     </div>
                 </div>
             </div>
 
             <div v-if="!isUserHasOrders"
-                class="ion-padding tw-h-min tw-flex tw-justify-center tw-items-center tw-text-gray-300">
-                <h4>No Current Orders</h4>
+                class="ion-padding tw-h-min tw-flex tw-justify-center tw-items-center tw-text-gray-200">
+                <h5>No Current Orders</h5>
             </div>
 
-            <div v-else>
-                <ion-item>
-                    <ion-label class="text-label" position="floating">Delivery Address</ion-label>
-                    <ion-input type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label class="text-label" position="floating">Pickup Address</ion-label>
-                    <ion-input type="text"></ion-input>
-                </ion-item>
-                <h6 class="ion-padding tw-flex tw-justify-start tw-text-gray-500">General Information</h6>
-                <ion-card class="tw-shadow-none tw-border tw-border-gray-300 tw-rounded-xl">
-                    <ion-card-header class="header-container">
-                        <h3 class="tw-font-bold">Item Details</h3>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <ion-item>
-                            <ion-label class="text-label" position="floating">Name of Item</ion-label>
-                            <ion-input type="text"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label class="text-label" position="floating">Item Description</ion-label>
-                            <ion-input type="text"></ion-input>
-                        </ion-item>
-                    </ion-card-content>
-                    <hr class="tw-border-gray-300 tw-bg-gray-300 tw-border tw-rounded-xl tw-w-1/2 tw-m-0 tw-mx-auto ">
-                    <ion-card-content>
-                        <ion-item>
-                            <ion-label class="text-label" position="floating">Preferred Delivery Date</ion-label>
-                            <ion-input type="text"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label class="text-label" position="floating">Preferred Delivery Time From</ion-label>
-                            <ion-input type="text"></ion-input>
-                        </ion-item>
-                    </ion-card-content>
-                    <hr class="tw-border-gray-300 tw-bg-gray-300 tw-border tw-rounded-xl tw-w-1/2 tw-m-0 tw-mx-auto ">
-                    <ion-card-content>
-                        <ion-item>
-                            <ion-label class="text-label" position="floating">Estimated Cost</ion-label>
-                            <ion-input type="text"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label class="text-label" position="floating">Payment Method</ion-label>
-                            <ion-input type="text"></ion-input>
-                        </ion-item>
-                    </ion-card-content>
-                </ion-card>
+            <div v-else class="tw-px-4">
+                <div class="tw-bg-white tw-rounded-md">
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Delivery Address</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3">
+                        <ion-label class="text-label tw-w-1/2">Pickup Address</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                </div>
+                <h6 class=" tw-text-[#D9D9D9]">General Information</h6>
+                <div class="tw-bg-white tw-rounded-md">
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Name of Item</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Item Description</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Preferred Delivery Date</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-full">Preferred Delivery Time From</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
+                        <ion-label class="text-label tw-w-1/2">Estimated Cost</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3">
+                        <ion-label class="text-label tw-w-1/2">Payment Method</ion-label>
+                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <FooterComponent :button1Text="'Dashboard'" :button1Link="'customer_dashboard'" :button1Icon="'home'"
-            :button2Text="'Current Orders'" :button2Link="'customer_deliveries'" :button2Icon="'cart'"
-            :button3Text="'History'" :button3Link="'customer_history'" :button3Icon="'file-tray-full'"
+        <FooterComponent :button1Text="'Dashboard'" :button1Link="'customer_dashboard'" :button1Icon="'home-outline'"
+            :button2Text="'Current Orders'" :button2Link="'customer_deliveries'" :button2Icon="'cart-outline'"
+            :button3Text="'History'" :button3Link="'customer_history'" :button3Icon="'file-tray-full-outline'"
             :button4Text="'Others'" :button4Link="'customer_others-settings'"
             :button4Icon="'ellipsis-horizontal-outline'" />
     </ion-page>
@@ -86,12 +77,8 @@
 import { ref } from 'vue';
 import {
     IonPage,
-    IonItem,
     IonLabel,
     IonInput,
-    IonCard,
-    IonCardHeader,
-    IonCardContent,
     IonIcon
 } from "@ionic/vue";
 import HeaderComponent from "../main_components/HeaderComponent.vue";
@@ -125,14 +112,6 @@ ion-page {
     margin-bottom: 36px;
 }
 
-ion-item {
-    margin-bottom: 16px;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    display: flex;
-    flex-direction: column;
-}
-
 ion-card>ion-card-content>ion-item {
     --padding-start: 0;
     --padding-end: 0;
@@ -144,16 +123,26 @@ ion-card-content {
 
 .text-label {
     font-family: "Moderustic", sans-serif;
+    width: 62.5%;
 }
 
 .header-container {
     padding: 16px 16px 0;
 }
 
+
+h3 {
+    color: #ffffff;
+}
+
+ion-input {
+    text-align: right;
+}
+
 ion-icon {
     margin-top: 18px;
     font-size: 32px;
-    color: #ad2831;
+    color: #ffffff;
     cursor: pointer;
 }
 </style>

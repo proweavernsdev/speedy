@@ -68,8 +68,11 @@ ion-footer {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: white;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-toolbar {
+    --background: #250902;
 }
 
 ion-row {
@@ -82,7 +85,7 @@ ion-col {
 
 ion-icon {
     font-size: 32px;
-    color: #ad2831;
+    color: #ffffff;
     cursor: pointer;
 }
 </style>

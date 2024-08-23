@@ -1,21 +1,24 @@
 <template>
     <ion-page>
-        <ion-content :fullscreen="true" class="ion-padding">
-            <h1>Login</h1>
-            <ion-item>
-                <ion-label position="floating">Email</ion-label>
-                <ion-input type="email" v-model="email"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Password</ion-label>
-                <ion-input type="password" v-model="password"></ion-input>
-            </ion-item>
-            <ion-button expand="full" @click="login" shape="round">Login</ion-button>
-            <div class="tw-flex tw-justify-around">
+        <ion-content :fullscreen="true" class="ion-padding tw-flex tw-flex-col tw-justify-between tw-h-full">
+            <div class="login-container">
+                <h1 class="tw-text-white">Login</h1>
+                <p class="tw-text-white">We deliver your love to the world.</p>
+                <div class="input-container">
+                    <ion-input type="email" placeholder="Email" v-model="email" class="ion-padding"
+                        shape="round"></ion-input>
+                    <ion-input type="password" placeholder="Password" v-model="password" class="ion-padding"
+                        shape="round"></ion-input>
+                </div>
+                <ion-button expand="full" @click="login" shape="round" class="tw-my-5">Login</ion-button>
                 <a @click="navigateTo('forgotPassword')"
-                    class="tw-underline tw-cursor-pointer hover:tw-no-underline">Forgot Password?</a>
-                <a @click="navigateTo('register')"
-                    class="tw-underline tw-cursor-pointer hover:tw-no-underline">Register</a>
+                    class="tw-underline tw-cursor-pointer hover:tw-no-underline tw-text-white">Forgot Password?</a>
+            </div>
+            <div class="register-container">
+                <p class="tw-text-white">Don't have an account?
+                    <a @click="navigateTo('register')"
+                        class="tw-underline tw-cursor-pointer hover:tw-no-underline tw-text-white">Register</a>
+                </p>
             </div>
         </ion-content>
     </ion-page>
@@ -25,8 +28,6 @@
 import {
     IonPage,
     IonContent,
-    IonItem,
-    IonLabel,
     IonInput,
     IonButton,
 } from "@ionic/vue";
@@ -76,4 +77,13 @@ const navigateTo = (path: string) => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+ion-content {
+    --background: #250902;
+    --height: 100vh;
+}
+
+ion-input {
+    --background: #ffffff;
+}
+</style>
