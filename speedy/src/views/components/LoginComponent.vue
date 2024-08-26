@@ -4,7 +4,7 @@
             <div class="login-container">
                 <h1 class="tw-text-white">Login</h1>
                 <p class="tw-text-white">We deliver your love to the world.</p>
-                <div class="input-container">
+                <div class="input-container tw-flex tw-flex-col tw-gap-4 tw-my-4">
                     <ion-input type="email" placeholder="Email" v-model="email" class="ion-padding"
                         shape="round"></ion-input>
                     <ion-input type="password" placeholder="Password" v-model="password" class="ion-padding"

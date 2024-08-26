@@ -48,19 +48,21 @@
                         <ion-label class="text-label tw-w-1/2">Preferred Delivery Date</ion-label>
                         <ion-input type="text" class="tw-w-1/3"></ion-input>
                     </div>
-                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
-                        <ion-label class="text-label tw-w-full">Preferred Delivery Time From</ion-label>
-                        <ion-input type="text" class="tw-w-1/3"></ion-input>
-                    </div>
 
                     <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3 tw-border-b">
                         <ion-label class="text-label tw-w-1/2">Estimated Cost</ion-label>
-                        <ion-input type="text" class="tw-w-1/3"></ion-input>
+                        <ion-input type="number" class="tw-w-1/3"></ion-input>
                     </div>
                     <div class="tw-flex tw-justify-between tw-items-center tw-w-full tw-px-3">
                         <ion-label class="text-label tw-w-1/2">Payment Method</ion-label>
                         <ion-input type="text" class="tw-w-1/3"></ion-input>
                     </div>
+                </div>
+                <div>
+                    <ion-button expand="block" class="tw-mt-4" color="secondary"
+                        @click="addNewOrder('add')">Submit</ion-button>
+                    <ion-button expand="block" class="tw-mt-4" fill="outline" color="light"
+                        @click="addNewOrder('remove')"> Cancel </ion-button>
                 </div>
             </div>
         </div>

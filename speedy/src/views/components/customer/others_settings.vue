@@ -2,9 +2,10 @@
     <ion-page>
         <HeaderComponent title="Others" headerIcon="person-circle" backIcon="" navigatePathonRight="customer_account"
             navigatePathonLeft="customer_dashboard" />
-
-        <div class="ion-padding">
-            <h1>Others</h1>
+        <div class="ion-content-wrapper">
+            <div class="ion-padding">
+                <h1>Others</h1>
+            </div>
         </div>
         <FooterComponent :button1Text="'Dashboard'" :button1Link="'customer_dashboard'" :button1Icon="'home-outline'"
             :button2Text="'Current Orders'" :button2Link="'customer_deliveries'" :button2Icon="'cart-outline'"
@@ -24,9 +25,13 @@ import FooterComponent from "../main_components/FooterComponent.vue";
 ion-page {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    justify-content: normal;
-    overflow-y: auto;
+    overflow: hidden;
+}
+
+.ion-content-wrapper {
+    height: 100%;
     flex: 1;
+    overflow-y: auto;
+    margin-bottom: 36px;
 }
 </style>
