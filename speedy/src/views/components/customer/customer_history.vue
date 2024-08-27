@@ -7,7 +7,7 @@
                 <div class="tw-flex tw-justify-between tw-items-center">
                     <h6 class="tw-uppercase tw-text-gray-500">Items</h6>
                     <button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="openFilterModal">
-                        <ion-icon name="filter-circle-outline"></ion-icon>
+                        <ion-icon name="filter-circle-outline" color="primary"></ion-icon>
                     </button>
                 </div>
                 <div>
@@ -32,39 +32,41 @@
             :button3-icon="'file-tray-full-outline'" :button4-text="'Others'" :button4-link="'customer_others-settings'"
             :button4-icon="'ellipsis-horizontal-outline'" />
 
-        <ion-modal class="tw-w-full tw-h-full tw-rounded-xl tw-bg-transparent tw-opacity-50"
-            :is-open="isFilterModalOpen" @did-dismiss="isFilterModalOpen = false">
-            <div class="tw-p-4 tw-h-full tw-flex tw-flex-col tw-justify-end tw-bg-transparent">
-                <div class="bg-lime-600 tw-opacity-100 tw-rounded-md tw-shadow-md tw-p-4">
-                    <h4 class="tw-text-center tw-font-bold">Filter Options</h4>
+        <ion-modal class="tw-w-auto tw-h-auto" :is-open="isFilterModalOpen" @did-dismiss="isFilterModalOpen = false">
+            <div class="tw-flex tw-justify-center tw-items-end tw-w-full tw-h-full">
+                <div class="tw-bg-white tw-w-full tw-rounded-t-xl tw-p-4">
+                    <h4 class="tw-text-left tw-font-bold">Filter Options</h4>
                     <ion-list>
                         <ion-item>
                             <ion-label>Name:</ion-label>
-                            <ion-input type="text" v-model="filterName"></ion-input>
+                            <ion-input type="text" v-model="filterName" class="tw-w-1/2 ion-text-end"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label>Size:</ion-label>
-                            <ion-select v-model="filterSize">
-                                <ion-select-option value="small">Small</ion-select-option>
-                                <ion-select-option value="medium">Medium</ion-select-option>
-                                <ion-select-option value="large">Large</ion-select-option>
-                            </ion-select>
-
+                            <div class="tw-w-min tw-flex tw-justify-end">
+                                <ion-select v-model="filterSize" interface="alert" placeholder="Select Size">
+                                    <ion-select-option value="small">Small</ion-select-option>
+                                    <ion-select-option value="medium">Medium</ion-select-option>
+                                    <ion-select-option value="large">Large</ion-select-option>
+                                </ion-select>
+                            </div>
                         </ion-item>
                         <ion-item>
-
                             <ion-label>Status:</ion-label>
-                            <ion-select v-model="filterStatus">
-                                <ion-select-option value="pending">Pending</ion-select-option>
-                                <ion-select-option value="completed">Completed</ion-select-option>
-                                <ion-select-option value="canceled">Canceled</ion-select-option>
-
-                            </ion-select>
+                            <div class="tw-w-min tw-flex tw-justify-end">
+                                <ion-select v-model="filterStatus" interface="alert" placeholder="Select Status">
+                                    <ion-select-option value="pending">Pending</ion-select-option>
+                                    <ion-select-option value="completed">Completed</ion-select-option>
+                                    <ion-select-option value="canceled">Canceled</ion-select-option>
+                                </ion-select>
+                            </div>
                         </ion-item>
                     </ion-list>
-                    <div class="tw-flex tw-justify-end tw-mt-4">
+                    <div class="tw-flex tw-justify-end tw-mt-4 tw-gap-4">
+                        <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="applyFilters()"
+                            color="primary">Apply</ion-button>
                         <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500"
-                            @click="applyFilters()">Apply</ion-button>
+                            @click="isFilterModalOpen = false" color="secondary">Cancel</ion-button>
                     </div>
                 </div>
             </div>
@@ -74,7 +76,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { IonPage, IonGrid, IonRow, IonCol, IonButton, IonModal, IonList, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
+import { IonPage, IonGrid, IonRow, IonCol, IonButton, IonModal, IonList, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonIcon } from '@ionic/vue';
 import HeaderComponent from "../main_components/HeaderComponent.vue";
 import FooterComponent from "../main_components/FooterComponent.vue";
 
@@ -112,5 +114,15 @@ ion-page {
 ion-icon {
     font-size: 1.5rem;
     color: #d9d9d9;
+}
+
+ion-modal {
+    --background: transparent;
+}
+
+ion-select {
+    display: flex;
+    justify-content: end;
+    align-items: end;
 }
 </style>

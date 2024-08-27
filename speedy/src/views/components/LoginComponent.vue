@@ -10,7 +10,8 @@
                     <ion-input type="password" placeholder="Password" v-model="password" class="ion-padding"
                         shape="round"></ion-input>
                 </div>
-                <ion-button expand="full" @click="login" shape="round" class="tw-my-5">Login</ion-button>
+                <ion-button expand="full" mode="ios" shape="round" color="secondary" @click="login"
+                    class="tw-my-5">Login</ion-button>
                 <a @click="navigateTo('forgotPassword')"
                     class="tw-underline tw-cursor-pointer hover:tw-no-underline tw-text-white">Forgot Password?</a>
             </div>
@@ -58,7 +59,7 @@ const login = () => {
         isValid.value = true;
         switch (user.type) {
             case "driver":
-                router.push("/driver/dashboard");
+                router.push("/driver_dashboard");
                 break;
             case "customer":
                 router.push("/customer_dashboard");

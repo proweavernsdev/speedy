@@ -1,9 +1,16 @@
 <template>
     <ion-page>
-        <HeaderComponent title="Account" headerIcon="" backIcon="chevron-back-outline"
-            navigatePathonRight="customer_account" navigatePathonLeft="customer_dashboard" />
+        <HeaderComponent title="" headerIcon="" backIcon="chevron-back-outline" navigatePathonRight="customer_account"
+            navigatePathonLeft="customer_dashboard" />
         <div class="ion-padding" id="account_container">
             <div v-show="!isEditing">
+
+                <div class="tw-flex tw-justify-center tw-items-center">
+                    <div class="tw-rounded-full tw-border-4 tw-border-white tw-flex tw-justify-center tw-items-center">
+                        <ion-icon name="person-circle-outline" class="tw-text-8xl tw-text-white"></ion-icon>
+                    </div>
+                </div>
+
                 <div class="tw-flex tw-justify-between tw-items-center">
                     <h5 class=" tw-text-white tw-px-3">Profile</h5>
                     <ion-button @click="toggleEditMode" class="ion-text-end">Edit</ion-button>
@@ -41,7 +48,7 @@
                             placeholder="ZIP"></ion-input>
                     </div>
                 </div>
-                <ion-button expand="full" mode="ios" shape="round" color="danger" @click="confirmDelete"
+                <ion-button expand="full" mode="ios" shape="round" color="secondary" @click="confirmDelete"
                     class="ion-margin-vertical">Delete Account</ion-button>
             </div>
 
@@ -51,19 +58,22 @@
                     Information</h6>
                 <div>
                     <ion-input v-model="editUser.firstName" placeholder="First Name"
-                        class="tw-border ion-padding-horizontal"></ion-input>
+                        class="tw-border ion-padding-horizontal tw-bg-white"></ion-input>
                     <ion-input v-model="editUser.lastName" placeholder="Last Name"
-                        class="tw-border ion-padding-horizontal"></ion-input>
+                        class="tw-border ion-padding-horizontal tw-bg-white"></ion-input>
                     <ion-input v-model="editUser.address" placeholder="Address"
-                        class="tw-border ion-padding-horizontal"></ion-input>
+                        class="tw-border ion-padding-horizontal tw-bg-white"></ion-input>
                     <ion-input v-model="editUser.state" placeholder="State"
-                        class="tw-border ion-padding-horizontal"></ion-input>
+                        class="tw-border ion-padding-horizontal tw-bg-white"></ion-input>
                     <ion-input v-model="editUser.city" placeholder="Town / City"
-                        class="tw-border ion-padding-horizontal"></ion-input>
+                        class="tw-border ion-padding-horizontal tw-bg-white"></ion-input>
                     <ion-input v-model="editUser.zip" placeholder="ZIP"
-                        class="tw-border ion-padding-horizontal"></ion-input>
-                    <ion-button expand="full" shape="round" @click="saveChanges">Save</ion-button>
-                    <ion-button expand="full" shape="round" color="light" @click="toggleEditMode">Cancel</ion-button>
+                        class="tw-border ion-padding-horizontal tw-bg-white"></ion-input>
+                    <div class="tw-my-4 tw-flex tw-flex-col tw-gap-2">
+                        <ion-button expand="full" shape="round" color="secondary" @click="saveChanges">Save</ion-button>
+                        <ion-button expand="full" shape="round" color="light"
+                            @click="toggleEditMode">Cancel</ion-button>
+                    </div>
                 </div>
             </ion-div>
         </div>

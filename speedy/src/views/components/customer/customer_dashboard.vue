@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonIcon } from "@ionic/vue";
+import { IonPage } from "@ionic/vue";
 import HeaderComponent from "../main_components/HeaderComponent.vue";
 import FooterComponent from "../main_components/FooterComponent.vue";
 </script>

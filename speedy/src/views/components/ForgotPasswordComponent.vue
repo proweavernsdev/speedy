@@ -1,46 +1,39 @@
 <template>
     <ion-page>
-        <ion-content>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>Forgot Password</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    <form @submit.prevent="handleForgotPassword">
-                        <ion-item>
-                            <ion-label position="floating">Email</ion-label>
-                            <ion-input v-model="email" type="email" required></ion-input>
-                        </ion-item>
-                        <ion-button expand="full" type="submit" color="primary" shape="round">Reset
-                            Password</ion-button>
-                    </form>
-                    <ion-card-subtitle class="tw-flex tw-justify-around ion-padding">
-                        <a @click.prevent="goToLogin"
-                            class="tw-underline tw-cursor-pointer hover:tw-no-underline">Login</a>
-                    </ion-card-subtitle>
-                </ion-card-content>
-            </ion-card>
+        <ion-content class="ion-padding tw-flex tw-flex-col tw-gap-6" color="primary">
+            <h1>Forgot Password</h1>
+            <p>Required code sent to your entered email.</p>
+            <form @submit.prevent="submitEmail" class="tw-flex tw-flex-col tw-my-4">
+                <ion-input type="email" placeholder="Email" v-model="email"
+                    class="ion-padding tw-bg-white tw-rounded-md tw-text-black" shape="round"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></ion-input>
+                <ion-button expand="full" type="submit" color="secondary">Send Reset Link</ion-button>
+            </form>
+            <ion-toast :is-open="toastOpen" :message="toastMessage" duration="3000"
+                @didDismiss="toastOpen = false"></ion-toast>
         </ion-content>
     </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel, IonInput, IonButton, IonCardSubtitle } from '@ionic/vue';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { IonPage, IonContent, IonInput, IonButton, IonToast } from '@ionic/vue';
 
-const router = useRouter();
 const email = ref('');
+const toastOpen = ref(false);
+const toastMessage = ref('');
 
-const handleForgotPassword = () => {
-    // Logic for handling forgot password (e.g., API call) goes here
-    // After processing, navigate to the login page
-    router.push('/login');
-}
-
-const goToLogin = () => {
-    router.push('/login');
-}
+const submitEmail = () => {
+    if (email.value) {
+        // Logic to handle sending the email
+        toastMessage.value = `Email sent to: ${email.value}`;
+    } else {
+        toastMessage.value = 'Please enter a valid email address';
+    }
+    toastOpen.value = true;
+};
 </script>
 
-<style></style>
+<style scoped>
+/* Add any styles you need */
+</style>

@@ -1,26 +1,111 @@
 <template>
-
     <ion-page>
-        <ion-content :fullscreen="true">
-            <ion-header>
-                <ion-toolbar>
-                    <ion-title>Driver Dashboard</ion-title>
-                </ion-toolbar>
-            </ion-header>
-            <ion-content class="ion-padding">
-                <div id="container">
-                    <strong>Driver Dashboard</strong>
-                    <p>
-                        A simple app to help you get started with Ionic and Vue.
-                    </p>
-                </div>
-            </ion-content>
-        </ion-content>
+        <HeaderComponent title="Speedy" headerIcon="person-circle" backIcon="" navigatePathonRight="driver_account"
+            navigatePathonLeft="driver_dashboard" />
+
+        <div class="ion-padding tw-h-full" id="container">
+            <div class="">
+                <h5 class="tw-uppercase tw-text-white">Statistics</h5>
+                <table class="tw-w-full tw-border tw-rounded-lg">
+                    <tr class="tw-border-b">
+                        <td class="tw-px-4 tw-py-4 tw-my-auto tw-mx-0">
+                            <ion-icon name="card-outline"></ion-icon>
+                            To pay:
+                        </td>
+                        <td class="tw-px-4 tw-py-2">
+                            <span class="tw-mx-2">0</span>
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </td>
+                    </tr>
+                    <tr class="tw-border-b">
+                        <td class="tw-px-4 tw-py-4 tw-my-auto tw-mx-0">
+                            <ion-icon name="cube-outline"></ion-icon>
+                            To ship:
+                        </td>
+                        <td class="tw-px-4 tw-py-2">
+                            <span class="tw-mx-2">0</span>
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </td>
+                    </tr>
+                    <tr class="tw-border-b">
+                        <td class="tw-px-4 tw-py-4 tw-my-auto tw-mx-0">
+                            <ion-icon name="car-outline"></ion-icon>
+                            To receive:
+                        </td>
+                        <td class="tw-px-4 tw-py-2">
+                            <span class="tw-mx-2">0</span>
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <td class="tw-px-4 tw-py-4 tw-my-auto tw-mx-0">
+                            <ion-icon name="star-outline"></ion-icon>
+                            To rate:
+                        </td>
+                        <td class="tw-px-4 tw-py-2">
+                            <span class="tw-mx-2">0</span>
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <FooterComponent :button1Text="'Dashboard'" :button1Link="'driver_dashboard'" :button1Icon="'home-outline'"
+            :button2Text="'Current Orders'" :button2Link="'driver_deliveries'" :button2Icon="'cart-outline'"
+            :button3Text="'History'" :button3Link="'driver_history'" :button3Icon="'file-tray-full-outline'"
+            :button4Text="'Others'" :button4Link="'driver_others-settings'"
+            :button4Icon="'ellipsis-horizontal-outline'" />
     </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
+import { IonPage, IonIcon } from "@ionic/vue";
+import HeaderComponent from "../main_components/HeaderComponent.vue";
+import FooterComponent from "../main_components/FooterComponent.vue";
 </script>
 
-<style></style>
+<style scoped>
+table {
+    border-radius: 8px;
+    border-collapse: separate;
+    overflow: hidden;
+}
+
+td {
+    padding: 4px;
+    color: #ffffff;
+    background: #640d14;
+    border-radius: 0;
+    width: 50%;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+td:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+td:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+ion-icon {
+    font-size: 18px;
+    color: #ffffff;
+    margin: 0 4px;
+}
+</style>
