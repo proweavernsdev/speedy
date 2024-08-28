@@ -3,7 +3,7 @@
         <HeaderComponent title="Others" headerIcon="person-circle" backIcon="" navigatePathonRight="customer_account"
             navigatePathonLeft="customer_dashboard" />
         <div class="ion-content-wrapper">
-            <div class="ion-padding">
+            <div class="ion-padding-horizontal">
                 <h1>Others</h1>
             </div>
         </div>

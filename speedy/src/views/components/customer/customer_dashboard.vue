@@ -3,7 +3,7 @@
         <HeaderComponent title="Speedy" headerIcon="person-circle" backIcon="" navigatePathonRight="customer_account"
             navigatePathonLeft="customer_dashboard" />
 
-        <div class="ion-padding tw-h-full" id="container">
+        <div class="ion-padding-horizontal tw-h-full" id="container">
             <div class="">
                 <h5 class="tw-uppercase tw-text-white">Statistics</h5>
                 <table class="tw-w-full tw-border tw-rounded-lg">

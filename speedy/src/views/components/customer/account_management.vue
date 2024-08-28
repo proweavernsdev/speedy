@@ -2,7 +2,7 @@
     <ion-page>
         <HeaderComponent title="" headerIcon="" backIcon="chevron-back-outline" navigatePathonRight="customer_account"
             navigatePathonLeft="customer_dashboard" />
-        <div class="ion-padding" id="account_container">
+        <div class="ion-padding-horizontal" id="account_container">
             <div v-show="!isEditing">
 
                 <div class="tw-flex tw-justify-center tw-items-center">

@@ -1,10 +1,9 @@
 <template>
     <ion-page>
-        <HeaderComponent title="" headerIcon="" backIcon="chevron-back-outline" navigatePathonRight="customer_account"
-            navigatePathonLeft="customer_dashboard" />
-        <div class="ion-padding" id="account_container">
+        <HeaderComponent backIcon="chevron-back-outline" navigatePathonRight="driver_account"
+            navigatePathonLeft="driver_dashboard" />
+        <div class="ion-padding-horizontal" id="account_container">
             <div v-show="!isEditing">
-
                 <div class="tw-flex tw-justify-center tw-items-center">
                     <div class="tw-rounded-full tw-border-4 tw-border-white tw-flex tw-justify-center tw-items-center">
                         <ion-icon name="person-circle-outline" class="tw-text-8xl tw-text-white"></ion-icon>
@@ -58,6 +57,15 @@
 
             <!-- Edit Mode -->
             <ion-div v-if="isEditing">
+                <div class="tw-flex tw-justify-center tw-items-center tw-gap-8">
+                    <div class="tw-rounded-full tw-border-4 tw-border-white tw-flex tw-justify-center tw-items-center">
+                        <ion-icon name="person-circle-outline" class="tw-text-8xl tw-text-white"></ion-icon>
+                    </div>
+                    <div>
+                        <ion-button @click="toggleEditMode" class="ion-text-end" shape="round" color="secondary"
+                            id="updateImage" size="small">Upload</ion-button>
+                    </div>
+                </div>
                 <h6 class="tw-flex tw-justify-start tw-text-gray-500">Edit
                     Information</h6>
                 <div>

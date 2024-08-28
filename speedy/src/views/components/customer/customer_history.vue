@@ -3,7 +3,7 @@
         <header-component title="History" header-icon="person-circle" back-icon=""
             navigate-path-on-right="customer_account" navigate-path-on-left="customer_dashboard" />
         <div class="ion-content-wrapper">
-            <div class="ion-padding">
+            <div class="ion-padding-horizontal">
                 <div class="tw-flex tw-justify-between tw-items-center">
                     <h6 class="tw-uppercase tw-text-gray-500">Items</h6>
                     <button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="openFilterModal">

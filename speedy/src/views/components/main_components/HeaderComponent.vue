@@ -1,7 +1,7 @@
 <template>
   <ion-header>
     <ion-toolbar color="primary" class="tw-flex tw-justify-between">
-      <div>
+      <div class="tw-flex tw-justify-between">
         <ion-icon id="leftIcon" :name="backIcon" slot="start" @click="navigateTo('leftNav')"
           v-show="backIcon"></ion-icon>
         <ion-title class="ion-padding tw-text-white">{{ title }}</ion-title>
