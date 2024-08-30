@@ -12,7 +12,8 @@
                 </div>
                 <ion-button expand="full" @click="registerUser" shape="round" class="tw-my-5"
                     color="secondary">Register</ion-button>
-                <p class="tw-text-white">By registering, you agree to our Terms of Service and Privacy Policy</p>
+                <p class="tw-text-white">By registering, you agree to our <strong class="tw-underline">Terms
+                        of Service</strong> and <strong class="tw-underline">Privacy Policy</strong> </p>
             </div>
             <div class="tw-my-4">
                 <p class="tw-text-white">Already have an account?
@@ -20,7 +21,7 @@
                         class="tw-underline tw-cursor-pointer hover:tw-no-underline tw-text-white">Login</a>
                 </p>
             </div>
-            <ion-toast :is-open="showToast" :message="toastMessage" duration="2000" position="top"
+            <ion-toast :is-open="showToast" :message="toastMessage" duration="2000" position="bottom" color="danger"
                 @did-dismiss="showToast = false" />
         </ion-content>
     </ion-page>
