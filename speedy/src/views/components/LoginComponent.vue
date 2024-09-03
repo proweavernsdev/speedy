@@ -21,8 +21,10 @@
                         class="tw-underline tw-cursor-pointer hover:tw-no-underline tw-text-white">Register</a>
                 </p>
             </div>
-            <ion-toast :is-open="showToast" :message="toastMessage" duration="2000" position="bottom" color="danger"
-                @did-dismiss="showToast = false" />
+            <ion-toast :is-open="showToastSuccess" :message="toastMessage" duration="1250" position="bottom"
+                color="success" @did-dismiss="showToastSuccess = false" />
+            <ion-toast :is-open="showToastError" :message="toastMessage" duration="1250" position="bottom"
+                color="danger" @did-dismiss="showToastError = false" />
         </ion-content>
     </ion-page>
 </template>
@@ -39,49 +41,61 @@ import {
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { loginAuth } from "../../services/api/api.js";
+import { users } from "../../views/data/users.js";
 
 const email = ref("");
 const password = ref("");
 const router = useRouter();
 
-const showToast = ref(false);
+const showToastSuccess = ref(false);
+const showToastError = ref(false);
 const toastMessage = ref("");
+const isValid = ref(false);
 
 const login = async () => {
-    try {
-        const data = await loginAuth(email.value, password.value);
-        console.log(data);
-        toastMessage.value = "Login successful!";
-        showToast.value = true;
-    } catch (error) {
-        console.error(error);
-        toastMessage.value = "Invalid email or password.";
-        showToast.value = true;
-    }
+    // try {
+    //     const data = await loginAuth(email.value, password.value);
+    //     console.log(data);
+    //     toastMessage.value = "Login successful!";
+    //     showToast.value = true;
+    // } catch (error) {
+    //     console.error(error);
+    //     toastMessage.value = "Invalid email or password.";
+    //     showToast.value = true;
+    // }
     // =======================================
-    // const user = userslist.value.find(
-    //     (user) => user.email === email.value && user.password === password.value
-    // );
-    // const userId = user?.id;
-    // if (userId) {
-    //     localStorage.setItem("userId", userId);
-    // }
-    // if (user) {
-    //     isValid.value = true;
-    //     switch (user.type) {
-    //         case "driver":
-    //             router.push("/driver_dashboard");
-    //             break;
-    //         case "customer":
-    //             router.push("/customer_dashboard");
-    //             break;
-    //         default:
-    //             router.push("/login");
-    //             break;
-    //     }
-    // } else {
-    //     alert("Invalid email or password");
-    // }
+    const user = users.find((user) => user.email === email.value && user.password === password.value);
+
+    if (user) {
+        isValid.value = true;
+        localStorage.setItem("userId", user.id); // Save user ID to localStorage
+
+        // Navigate based on user type
+        switch (user.type) {
+            case "driver":
+                toastMessage.value = "Login successful!";
+                showToastSuccess.value = true;
+                setTimeout(() => {
+                    router.push("/driver_dashboard");
+                }, 1000);
+                break;
+            case "customer":
+                toastMessage.value = "Login successful!";
+                showToastSuccess.value = true;
+                setTimeout(() => {
+                    router.push("/customer_dashboard");
+                }, 1000);
+                break;
+            default:
+                router.push("/login");
+                break;
+        }
+    } else {
+        setTimeout(() => {
+            toastMessage.value = "Invalid email or password.";
+            showToastSuccess.value = true;
+        }, 2000);
+    }
 };
 
 const navigateTo = (path: string) => {

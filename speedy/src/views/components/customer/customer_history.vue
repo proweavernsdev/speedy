@@ -6,7 +6,8 @@
             <div class="ion-padding-horizontal">
                 <div class="tw-flex tw-justify-between tw-items-center">
                     <h6 class="tw-uppercase tw-text-gray-500">Items</h6>
-                    <button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="openFilterModal">
+                    <button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500 tw-flex tw-justify-center"
+                        @click="openFilterModal">
                         <ion-icon name="filter-circle-outline" color="primary"></ion-icon>
                     </button>
                 </div>
@@ -20,7 +21,17 @@
                         <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
                             <ion-col>Name 1</ion-col>
                             <ion-col>Size 1</ion-col>
-                            <ion-col>Status 1</ion-col>
+                            <ion-col>Ongoing</ion-col>
+                        </ion-row>
+                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
+                            <ion-col>Name 2</ion-col>
+                            <ion-col>Size 2</ion-col>
+                            <ion-col>Delivered</ion-col>
+                        </ion-row>
+                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
+                            <ion-col>Name 3</ion-col>
+                            <ion-col>Size 3</ion-col>
+                            <ion-col>Canceled</ion-col>
                         </ion-row>
                     </ion-grid>
                 </div>
@@ -108,7 +119,7 @@ ion-page {
     height: 100%;
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 36px;
+    margin-bottom: 54px;
 }
 
 ion-icon {

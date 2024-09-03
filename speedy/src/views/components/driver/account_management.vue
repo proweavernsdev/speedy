@@ -152,7 +152,7 @@ ion-page {
     height: 100%;
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 36px;
+    margin-bottom: 54px;
 }
 
 ion-input {
