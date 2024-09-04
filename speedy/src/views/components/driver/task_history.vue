@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <header-component title="History" header-icon="person-circle" back-icon=""
-            navigate-path-on-right="customer_account" navigate-path-on-left="customer_dashboard" />
+            navigate-path-on-right="driver_account" navigate-path-on-left="driver_dashboard" />
         <div class="ion-content-wrapper">
             <div class="ion-padding-horizontal">
                 <div class="tw-flex tw-justify-between tw-items-center">
@@ -14,33 +14,23 @@
                 <div>
                     <ion-grid class="tw-w-full tw-rounded-t-md tw-rounded-b-md">
                         <ion-row class="tw-bg-[#FFE0DE] ion-text-center">
-                            <ion-col>Name</ion-col>
+                            <ion-col>Task</ion-col>
                             <ion-col>Size</ion-col>
                             <ion-col>Status</ion-col>
                         </ion-row>
-                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
-                            <ion-col>Name 1</ion-col>
-                            <ion-col>Size 1</ion-col>
-                            <ion-col>Ongoing</ion-col>
-                        </ion-row>
-                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
-                            <ion-col>Name 2</ion-col>
-                            <ion-col>Size 2</ion-col>
-                            <ion-col>Delivered</ion-col>
-                        </ion-row>
-                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
-                            <ion-col>Name 3</ion-col>
-                            <ion-col>Size 3</ion-col>
-                            <ion-col>Canceled</ion-col>
+                        <ion-row v-for="item in filteredItems" :key="item.name" class="tw-bg-[#FFF5F4] ion-text-center">
+                            <ion-col class="tw-capitalize">{{ item.name }}</ion-col>
+                            <ion-col class="tw-capitalize">{{ item.size }}</ion-col>
+                            <ion-col class="tw-capitalize">{{ item.status }}</ion-col>
                         </ion-row>
                     </ion-grid>
                 </div>
             </div>
         </div>
-        <footer-component :button1-text="'Dashboard'" :button1-link="'customer_dashboard'"
-            :button1-icon="'home-outline'" :button2-text="'Current Orders'" :button2-link="'customer_deliveries'"
-            :button2-icon="'cart-outline'" :button3-text="'History'" :button3-link="'customer_history'"
-            :button3-icon="'file-tray-full-outline'" :button4-text="'Others'" :button4-link="'customer_others-settings'"
+        <footer-component :button1-text="'Dashboard'" :button1-link="'driver_dashboard'" :button1-icon="'home-outline'"
+            :button2-text="'Current Orders'" :button2-link="'driver_deliveries'" :button2-icon="'cart-outline'"
+            :button3-text="'History'" :button3-link="'driver_history'" :button3-icon="'file-tray-full-outline'"
+            :button4-text="'Others'" :button4-link="'driver_others-settings'"
             :button4-icon="'ellipsis-horizontal-outline'" />
 
         <ion-modal class="tw-w-auto tw-h-auto" :is-open="isFilterModalOpen" @did-dismiss="isFilterModalOpen = false">
@@ -76,6 +66,8 @@
                     <div class="tw-flex tw-justify-end tw-mt-4 tw-gap-4">
                         <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="applyFilters()"
                             color="primary">Apply</ion-button>
+                        <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="resetFilters"
+                            color="tertiary">Reset</ion-button>
                         <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500"
                             @click="isFilterModalOpen = false" color="secondary">Cancel</ion-button>
                     </div>
@@ -86,26 +78,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { IonPage, IonGrid, IonRow, IonCol, IonButton, IonModal, IonList, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonIcon } from '@ionic/vue';
 import HeaderComponent from "../main_components/HeaderComponent.vue";
 import FooterComponent from "../main_components/FooterComponent.vue";
-
 
 const isFilterModalOpen = ref(false);
 const filterName = ref('');
 const filterSize = ref('');
 const filterStatus = ref('');
+
+const items = ref([
+    { name: 'Item 1', size: 'small', status: 'ongoing' },
+    { name: 'Item 2', size: 'medium', status: 'delivered' },
+    { name: 'Item 3', size: 'large', status: 'canceled' },
+]);
+
+const filteredItems = computed(() => {
+    return items.value.filter(item => {
+        return (!filterName.value || item.name.toLowerCase().includes(filterName.value.toLowerCase())) &&
+            (!filterSize.value || item.size === filterSize.value) &&
+            (!filterStatus.value || item.status === filterStatus.value);
+    });
+});
+
 const applyFilters = () => {
     console.log('Filters applied:', filterName.value, filterSize.value, filterStatus.value);
     isFilterModalOpen.value = false;
 };
 
+const resetFilters = () => {
+    filterName.value = '';
+    filterSize.value = '';
+    filterStatus.value = '';
+};
+
 const openFilterModal = () => {
     isFilterModalOpen.value = true;
 };
-
-
 </script>
 
 <style scoped>

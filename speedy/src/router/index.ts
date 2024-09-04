@@ -67,6 +67,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/components/customer/others_settings.vue"),
   },
 
+  {
+    path: "/customer_feedback",
+    name: "Customer Feedback",
+    component: () =>
+      import("../views/components/customer/customer_feedback.vue"),
+  },
+
+  {
+    path: "/customer_report",
+    name: "Customer Report",
+    component: () => import("../views/components/customer/customer_report.vue"),
+  },
+
   // driver routes
   {
     path: "/driver_dashboard",
@@ -85,6 +98,28 @@ const routes: Array<RouteRecordRaw> = [
     path: "/uploads",
     name: "Upload Document",
     component: () => import("../views/components/driver/upload_documents.vue"),
+  },
+  {
+    path: "/driver_deliveries",
+    name: "Driver Deliveries",
+    component: () => import("../views/components/driver/task_history.vue"),
+  },
+
+  {
+    path: "/driver_feedback",
+    name: "Driver Feedback",
+    component: () => import("../views/components/driver/driver_feedback.vue"),
+  },
+
+  {
+    path: "/driver_report",
+    name: "Driver Report",
+    component: () => import("../views/components/driver/driver_report.vue"),
+  },
+  {
+    path: "/driver_others-settings",
+    name: "Driver Settings",
+    component: () => import("../views/components/driver/others_settings.vue"),
   },
   {
     path: "/test",

@@ -2,25 +2,28 @@
     <ion-page>
         <HeaderComponent title="Others" headerIcon="person-circle" backIcon="" navigatePathonRight="customer_account"
             navigatePathonLeft="customer_dashboard" />
-        <div class="ion-content-wrapper tw-h-screen tw-flex tw-flex-col tw-justify-between">
-            <div class="ion-padding-horizontal tw-flex tw-flex-col ">
-                <h1 class="tw-text-white">Others</h1>
-                <div class="tw-flex tw-flex-col tw-my-2 tw-gap-4">
-                    <a
-                        class=" tw-text-white tw-py-2 tw-px-4 tw-w-full tw-border-b-2 tw-border-gray-600 tw-text-base tw-flex tw-items-center tw-gap-3">
-                        <ion-icon name="list-outline"></ion-icon>
+        <div class="ion-content-wrapper">
+            <div class="ion-padding-horizontal">
+                <h1 class="text-white">Others</h1>
+                <div class="my-2">
+                    <ion-item
+                        class="tw-text-white tw-border-b-2 tw-border-gray-600 tw-text-base tw-flex tw-items-center"
+                        color="primary" button @click="router.push('/customer_feedback')">
+                        <ion-icon slot="start" name="list-outline"></ion-icon>
                         Feedback
-                    </a>
-                    <a
-                        class=" tw-text-white tw-py-2 tw-px-4 tw-w-full tw-border-b-2 tw-border-gray-600 tw-text-base tw-flex tw-items-center tw-gap-3">
-                        <ion-icon name="alert-circle-outline"></ion-icon>
+                    </ion-item>
+                    <ion-item class="tw-text-white tw-border-gray-600 tw-text-base tw-flex tw-items-center"
+                        color="primary" button @click="router.push('/customer_report')">
+                        <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
                         Send a Report
-                    </a>
+                    </ion-item>
                 </div>
             </div>
 
-            <div class="ion-padding-horizontal">
-                <button class=" tw-text-white tw-py-4 tw-px-6 tw-rounded-full tw-w-full tw-bg-red-900">Logout</button>
+            <div class="ion-padding-horizontal my-4">
+                <ion-button expand="full" color="danger" class="tw-rounded-full" @click="logout">
+                    Logout
+                </ion-button>
             </div>
         </div>
         <FooterComponent :button1Text="'Dashboard'" :button1Link="'customer_dashboard'" :button1Icon="'home-outline'"
@@ -32,9 +35,27 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage } from "@ionic/vue";
-import HeaderComponent from "../main_components/HeaderComponent.vue";
-import FooterComponent from "../main_components/FooterComponent.vue"; 
+import { useRouter } from 'vue-router';
+import HeaderComponent from '../main_components/HeaderComponent.vue';
+import FooterComponent from '../main_components/FooterComponent.vue';
+import { Preferences } from '@capacitor/preferences';
+
+const router = useRouter();
+
+async function logout() {
+    try {
+        // Clear user authentication data (if any)
+        await Preferences.remove({ key: 'userToken' }); // Example key
+
+        // Perform other cleanup operations if necessary
+
+        // Redirect to login page or home screen
+        router.push('/login'); // Adjust the route to your login page
+    } catch (error) {
+        console.error('Logout failed', error);
+    }
+}
+
 </script>
 
 <style scoped>
@@ -51,8 +72,18 @@ ion-page {
     margin-bottom: 54px;
 }
 
-ion-icon {
-    font-size: 1.5rem;
+.text-white {
     color: #ffffff;
+}
+
+.ion-item {
+    --background: transparent;
+    --color: #ffffff;
+    --border-color: #6c757d;
+}
+
+.ion-button {
+    --background: #dc3545;
+    --color: #ffffff;
 }
 </style>

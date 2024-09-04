@@ -18,20 +18,10 @@
                             <ion-col>Size</ion-col>
                             <ion-col>Status</ion-col>
                         </ion-row>
-                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
-                            <ion-col>Name 1</ion-col>
-                            <ion-col>Size 1</ion-col>
-                            <ion-col>Ongoing</ion-col>
-                        </ion-row>
-                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
-                            <ion-col>Name 2</ion-col>
-                            <ion-col>Size 2</ion-col>
-                            <ion-col>Delivered</ion-col>
-                        </ion-row>
-                        <ion-row class="tw-bg-[#FFF5F4] ion-text-center">
-                            <ion-col>Name 3</ion-col>
-                            <ion-col>Size 3</ion-col>
-                            <ion-col>Canceled</ion-col>
+                        <ion-row v-for="item in filteredItems" :key="item.name" class="tw-bg-[#FFF5F4] ion-text-center">
+                            <ion-col class="tw-capitalize">{{ item.name }}</ion-col>
+                            <ion-col class="tw-capitalize">{{ item.size }}</ion-col>
+                            <ion-col class="tw-capitalize">{{ item.status }}</ion-col>
                         </ion-row>
                     </ion-grid>
                 </div>
@@ -76,6 +66,8 @@
                     <div class="tw-flex tw-justify-end tw-mt-4 tw-gap-4">
                         <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="applyFilters()"
                             color="primary">Apply</ion-button>
+                        <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500" @click="resetFilters"
+                            color="tertiary">Reset</ion-button>
                         <ion-button class="tw-rounded-full tw-bg-gray-200 tw-text-gray-500"
                             @click="isFilterModalOpen = false" color="secondary">Cancel</ion-button>
                     </div>
@@ -86,26 +78,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { IonPage, IonGrid, IonRow, IonCol, IonButton, IonModal, IonList, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonIcon } from '@ionic/vue';
 import HeaderComponent from "../main_components/HeaderComponent.vue";
 import FooterComponent from "../main_components/FooterComponent.vue";
-
 
 const isFilterModalOpen = ref(false);
 const filterName = ref('');
 const filterSize = ref('');
 const filterStatus = ref('');
+
+const items = ref([
+    { name: 'Item 1', size: 'small', status: 'ongoing' },
+    { name: 'Item 2', size: 'medium', status: 'delivered' },
+    { name: 'Item 3', size: 'large', status: 'canceled' },
+]);
+
+const filteredItems = computed(() => {
+    return items.value.filter(item => {
+        return (!filterName.value || item.name.toLowerCase().includes(filterName.value.toLowerCase())) &&
+            (!filterSize.value || item.size === filterSize.value) &&
+            (!filterStatus.value || item.status === filterStatus.value);
+    });
+});
+
 const applyFilters = () => {
     console.log('Filters applied:', filterName.value, filterSize.value, filterStatus.value);
     isFilterModalOpen.value = false;
 };
 
+const resetFilters = () => {
+    filterName.value = '';
+    filterSize.value = '';
+    filterStatus.value = '';
+};
+
 const openFilterModal = () => {
     isFilterModalOpen.value = true;
 };
-
-
 </script>
 
 <style scoped>
