@@ -171,7 +171,7 @@ class Users_v2 extends Rest
                         } else {
                             $this->response([
                                 'success' => false,
-                                'message' => $login
+                                'message' => 'Account does not exist daw'
                             ], 500);
                         }
                     }
@@ -268,7 +268,7 @@ class Users_v2 extends Rest
                                     </div>";
                             $mail = $this->sm->sendEmail($to_email, $subject, $body);
                             if ($mail) {
-                                $this->responseOutput('Email verification link has been sent', [], 200, true);
+                                $this->responseOutput('Email verification link has been sent to ' . $fbAcc->email . '', [], 200, true);
                             } else {
                                 $this->responseOutput('Something went wrong, Email not sent');
                             }

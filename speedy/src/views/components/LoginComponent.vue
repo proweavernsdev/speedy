@@ -32,13 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    IonPage,
-    IonContent,
-    IonInput,
-    IonButton,
-    IonToast,
-} from "@ionic/vue";
+import { IonPage, IonContent, IonInput, IonButton, IonToast, } from "@ionic/vue";
 
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -61,6 +55,7 @@ const login = async () => {
         console.log(data);
         toastMessage.value = "Login successful!";
         showToastSuccess.value = true;
+        router.push('/load');
     } catch (error) {
         console.error(error);
         toastMessage.value = "Invalid email or password.";

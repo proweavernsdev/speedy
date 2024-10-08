@@ -5,7 +5,7 @@
                 <h1 class="tw-text-white">Register</h1>
                 <p class="tw-text-white">We deliver your love to the world.</p>
                 <div class="input-container tw-flex tw-flex-col tw-gap-4 tw-my-4">
-                    <ion-input type="email" placeholder="Email" v-model="email" class="ion-padding"
+                    <ion-input type="email" placeholder="Email" v-model="email" class="ion-padding" color="secondary"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" shape="round"></ion-input>
                     <ion-input type="password" placeholder="Password" v-model="password" class="ion-padding"
                         shape="round"></ion-input>
@@ -81,5 +81,6 @@ ion-content {
 
 ion-input {
     --background: #ffffff;
+    --color: #000000;
 }
 </style>
