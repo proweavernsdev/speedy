@@ -28,13 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    IonPage,
-    IonContent,
-    IonInput,
-    IonButton,
-    IonToast,
-} from "@ionic/vue";
+import { IonPage, IonContent, IonInput, IonButton, IonToast, } from "@ionic/vue";
 
 import { ref } from "vue";
 import { useRouter } from "vue-router";

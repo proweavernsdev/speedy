@@ -1,10 +1,7 @@
 import axios from "axios";
 import { ref } from "vue";
 // import { signInWithEmailAndPassword } from "@/services/firebaseConfig";
-import {
-  getAuth,
-  signInWithEmailAndPassword as signInFirebase,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword as signInFirebase, } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -24,7 +21,7 @@ const auth = getAuth(app);
 
 const baseUrl = "https://speedyrepairanddelivery.com/api-delivery/";
 // const baseUrl = 'http://localhost/codeigniter/';
-let pwauth = localStorage.getItem("token");
+let pwauth = JSON.parse(localStorage.getItem("token"));
 const updateToken = () => {
   pwauth = localStorage.getItem("token");
 };
@@ -55,14 +52,14 @@ export async function loginAuth(userName, password) {
     const userCredential = await signInFirebase(auth, userName, password);
     const user = userCredential.user;
     uidInfo.value = user.uid;
-    console.log("User UID:", user.uid);
-
     const credentials = btoa(userName + ":" + password);
+    console.log("Credentials:", credentials);
     const res = await axios.get(baseUrl + "Users_v2", {
       headers: {
         LOGINAUTH: "Basic " + credentials,
       },
     });
+    
     return res.data;
   } catch (error) {
     console.error("Error signing in or calling API:", error);
@@ -148,7 +145,7 @@ export async function resetPassword(email, newPassword, confPassword, token) {
 //Retrieves data from the Users endpoint using axios.
 export async function retrieveData() {
   updateToken();
-  const res = await axios.get(baseUrl + "Users_v2/info", {
+  const res = await axios.get(baseUrl + "Users_v2", {
     headers: {
       PWAUTH: pwauth,
     },
