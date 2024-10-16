@@ -21,7 +21,7 @@ const auth = getAuth(app);
 
 const baseUrl = "https://speedyrepairanddelivery.com/api-delivery/";
 // const baseUrl = 'http://localhost/codeigniter/';
-let pwauth = JSON.parse(localStorage.getItem("token"));
+let pwauth = localStorage.getItem("token");
 const updateToken = () => {
   pwauth = localStorage.getItem("token");
 };
@@ -56,7 +56,9 @@ export async function loginAuth(userName, password) {
     console.log("Credentials:", credentials);
     const res = await axios.get(baseUrl + "Users_v2", {
       headers: {
-        LOGINAUTH: "Basic " + credentials,
+        // LOGINAUTH: "Basic " + credentials,
+        Authorization: "Basic " + credentials, // Set Authorization header
+        PWAUTH: pwauth,
       },
     });
     
