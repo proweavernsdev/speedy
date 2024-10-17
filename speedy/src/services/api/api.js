@@ -56,9 +56,7 @@ export async function loginAuth(userName, password) {
     console.log("Credentials:", credentials);
     const res = await axios.get(baseUrl + "Users_v2", {
       headers: {
-        // LOGINAUTH: "Basic " + credentials,
-        Authorization: "Basic " + credentials, // Set Authorization header
-        PWAUTH: pwauth,
+        LOGINAUTH: "Basic" + credentials,
       },
     });
     
@@ -147,7 +145,7 @@ export async function resetPassword(email, newPassword, confPassword, token) {
 //Retrieves data from the Users endpoint using axios.
 export async function retrieveData() {
   updateToken();
-  const res = await axios.get(baseUrl + "Users_v2", {
+  const res = await axios.get(baseUrl + "Users_v2/info_get", {
     headers: {
       PWAUTH: pwauth,
     },
