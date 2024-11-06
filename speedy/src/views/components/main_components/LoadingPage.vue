@@ -95,18 +95,20 @@ const userType = ref('');
 
 onMounted(() => {
     try {
-        retrieveData().then(data => {
-            const level = JSON.stringify(data.data.UserAccess);
+        const promise = retrieveData();
+        promise.then((response) => {
+            console.log(response.data);  
+            const level = JSON.stringify(response.data.UserAccess);
+            console.log(level);
             accessLevelNumber.value = level;
-
             if (level === 'null') {
                 router.push({
                     path: '/access-level',
                     query: {
-                        marker: btoa(data.data.UserID),
-                        email: btoa(data.data.Email),
-                        level: btoa(data.data.UserAccess),
-                        company: btoa(data.data.Company),
+                        marker: btoa(response.data.UserID),
+                        email: btoa(response.data.Email),
+                        level: btoa(response.data.UserAccess),
+                        company: btoa(response.data.Company),
                     },
                 });
             } else {

@@ -145,12 +145,13 @@ export async function resetPassword(email, newPassword, confPassword, token) {
 //Retrieves data from the Users endpoint using axios.
 export async function retrieveData() {
   updateToken();
-  const res = await axios.get(baseUrl + "Users_v2/info_get", {
+  console.log(pwauth);
+  const res = await axios.get(baseUrl + 'Users_v2', {
     headers: {
       PWAUTH: pwauth,
     },
-  });
-  return res.data;
+  })
+  return res.data
 }
 
 //Retrieves data from the Users endpoint using axios.

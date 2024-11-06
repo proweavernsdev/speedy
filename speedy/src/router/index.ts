@@ -37,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "ResetPassword",
     component: () => import("../views/components/ResetPasswordComponent.vue"),
   },
+  {
+    path: "/access-level",
+    name: "AccessLevel",
+    component: () => import("../views/components/main_components/AccessLevelComponent.vue"),
+  },
   // customer routes
   {
     path: "/customer_dashboard",

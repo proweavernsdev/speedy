@@ -5,8 +5,7 @@
                 <h1 class="tw-text-white">Login</h1>
                 <p class="tw-text-white">Welcome back! Please login to your account.</p>
                 <div class="input-container tw-flex tw-flex-col tw-gap-4 tw-my-4">
-                    <ion-input type="email" placeholder="Email" v-model="email" class="ion-padding" color="secondary"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" shape="round"></ion-input>
+                    <ion-input type="email" placeholder="Email" v-model="email" class="ion-padding" color="secondary" shape="round"></ion-input>
                     <ion-input type="password" placeholder="Password" v-model="password" class="ion-padding"
                         shape="round"></ion-input>
                 </div>
@@ -31,6 +30,7 @@ import { loginAuth } from "../../services/api/api.js"; // Import your login func
 
 const email = ref("");
 const password = ref("");
+const info = ref("");
 const router = useRouter();
 
 const showToast = ref(false);
@@ -42,13 +42,16 @@ const loginUser = async () => {
         const data = await loginAuth(email.value, password.value); // Call your login API function
         console.log(data);
 
-        // Show success toast
-        toastMessage.value = "Login successful!";
-        toastColor.value = "success"; // Set color to green for success
-        showToast.value = true;
-
-        // Navigate to the dashboard or home page
-        router.push("/load"); // Change this to your desired route
+        if (data && data.result) {
+            info.value = data.result;
+            localStorage.setItem("token", JSON.parse(data.result));
+            toastMessage.value = "Login successful!";
+            toastColor.value = "success";
+            showToast.value = true;
+            router.push("/load"); 
+        } else {
+            throw new Error('Invalid login data');
+        }
 
     } catch (error) {
         console.error(error);
